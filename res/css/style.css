@@ -99,8 +99,13 @@ div.main-begin {
     width: 100%;
 }
 
-.entry-text {
+.entry-text, .entry-title {
     margin-left: 10px;
+}
+
+.entry-title {
+    font-size: 14pt;
+    font-weight: bold;
 }
 
 .entry-text a,

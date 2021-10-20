@@ -1,27 +1,27 @@
 [
   {
-    "autorName": "Peeter Paks",
+    "authorName": "Peeter Paks",
 	"createdAt": "2021-09-23",
     "id": 10,
     "body": "I think it's going to rain",
 	"image": "tornado.jpg"
   },
   {
-    "autorName": "Toomas Toop",
+    "authorName": "Toomas Toop",
 	"createdAt": "2021-09-20",
     "id": 9,
     "body": "Which weighs more, a pound of feathers or a pound of bricks?",
-	"hasTags": ["mysteriesoflife"]
+	"hashTags": ["mysteriesoflife"]
   },
   {
-    "autorName": "Karl Karm",
+    "authorName": "Karl Karm",
 	"createdAt": "2021-09-5",
     "id": 8,
     "body": "Ain't I sexy",
 	"image": "batman.jpg"
   },
     {
-    "autorName": "Viktor Vintpüss",
+    "authorName": "Viktor Vintpüss",
 	"createdAt": "2021-09-4",
     "id": 7,
     "title": "Girlfriend wanted",
@@ -29,18 +29,18 @@
 	"image": "girlfriend.jpg"
   },
     {
-    "autorName": "Kalle Kallistaja",
+    "authorName": "Kalle Kallistaja",
 	"createdAt": "2021-09-2",
     "id": 6,
     "title": "Question",
     "body": "42",
-	"hasTags": [
+	"hashTags": [
 		"bestjoke",
 		"meaningoflife"
 		]
   },
     {
-    "autorName": "Jaan Jalgratas",
+    "authorName": "Jaan Jalgratas",
 	"createdAt": "2021-08-25",
     "id": 5,
     "title": "No sunglasses",
@@ -48,7 +48,7 @@
 	"image": "cool.jpg"
   },
     {
-    "autorName": "Kaupo Kaup",
+    "authorName": "Kaupo Kaup",
 	"createdAt": "2021-08-21",
     "id": 4,
     "title": "Wifi",
@@ -56,20 +56,20 @@
 	"image": "wifi.jpg"
   },
     {
-    "autorName": "Tarmo Tark",
+    "authorName": "Tarmo Tark",
 	"createdAt": "2021-08-15",
     "id": 3,
     "title": "DJ Bobo",
     "body": "There is a party",
 	"image": "party.jpg",
-	"hasTags": [
+	"hashTags": [
 		"europop",
 		"music",
 		"horses"
 		]
   },
     {
-    "autorName": "Ott Seljak",
+    "authorName": "Ott Seljak",
 	"createdAt": "2021-08-10",
     "id": 2,
     "title": "Suncream",
@@ -77,7 +77,7 @@
 	"image": "suncream.jpg"
   },
     {
-    "autorName": "Jüri Toru",
+    "authorName": "Jüri Toru",
 	"createdAt": "2021-08-09",
     "id": 1,
     "title": "Diet",

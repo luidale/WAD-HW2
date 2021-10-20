@@ -1,23 +1,94 @@
 $(function() {
 
-    $.get("https://jsonkeeper.com/b/M7UN", function(json_obj) {
+//    $.get("https://jsonkeeper.com/b/M7UN", function(json_obj) {
+	$.get("https://api.npoint.io/763f29735f063b6f7ad7", function(json_obj) {	
     //$.get("res/json/posts.json", function(json_obj) {
         for (obj of json_obj) {
+
+            // Build html
             let section = $('<section class="entry">');
-            // Vaja täpsustada alates siit:
-            let head = $('<h1>').text(obj.title);
-            let body = $('<p>').text(obj.body);
-            let date = $('<p>').text(obj.createdAt);
-            let id = $('<p>').text(obj.id);
-            let author = $('<p>').text(obj.autorName);
-            let date = $('<p>').text(obj.body);
-            let image = $('<p>').text(obj.image);
-            let hashTags = $('<p>').text(obj.hashTags);
-            section.append(head);
-            section.append(body);
-            // Siit alates võiks olla ok.
+
+            //  Topbar
+            let topbar = $('<div class="entry-topbar">');
+            //      author
+            let div = $('<div>');
+            let author = $('<img src="res/images/me.png">');
+            author.prop("title",obj.authorName);
+            author.prop("alt",obj.authorName);
+            div.append(author);
+            topbar.append(div);
+            //      date
+            let dateDiv = $('<div class="entry-datetext">');
+            dateDiv.append($('<p>').text(convertDate(obj.createdAt)));
+            topbar.append(dateDiv);
+            section.append(topbar);
+
+            // Image
+            //  add only when image exists
+            if (obj.image){
+                let image =  $('<img>');
+                image.prop("src", "res/images/"+obj.image);
+                image.prop("alt", obj.image.split(".")[0]);
+                section.append(image);
+            }
+
+            // Entry-text
+            let entryTitle =  $('<div class="entry-title">');
+            entryTitle.append($('<p>').text(obj.title));
+            section.append(entryTitle);
+            let entryText =  $('<div class="entry-text">');
+            let text = $('<p>').text(obj.body)
+           
+            //  add hashtags
+            if (obj.hashTags){
+                let hashTags = obj.hashTags;
+                // add all hashtags
+                for (hashTag in hashTags){
+                    let hashTagElement = $('<a href="#">').text("#"+hashTags[hashTag]);
+                }
+            }
+            entryText.append(text);
+            section.append(entryText);
+            //  add hashtags
+
+            //let hashTags = $('<p>').text(obj.hashTags);
+
+
+            // Entry-react
+            let entryReact =  $('<div class="entry-react">');
+            entryReact.append('<img src="res/images/like-icon-png-0.jpg" alt="I like it!"></img>');
+            section.append(entryReact);
+
+            //section.append(head);
+            //section.append(body);
+
+
+            
             $(".body-container").append(section)
         }
     })
   
  });
+
+ function convertDate(dateString){
+
+    let monthNames = new Array('January','February','March','April','May','June','July','August','September','October','November','December');
+    date = new Date(dateString);
+
+    var month = date.getMonth();
+    var day = date.getDate();
+    // add "strings" to date
+    if (day%10 == 1){
+        day = day + "st";
+    } else if (day%10 == 2){
+        day = day + "nd";
+    } else if (day%10 == 3){
+        day = day + "rd";
+    } else {
+        day = day + "th";
+    }
+    var year = date.getYear();
+
+    return monthNames[month] + " " + day + " " + (1900 +year);
+
+ }
