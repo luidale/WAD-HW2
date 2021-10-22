@@ -1,8 +1,9 @@
 $(function() {
 
-//    $.get("https://jsonkeeper.com/b/M7UN", function(json_obj) {
-	$.get("https://api.npoint.io/763f29735f063b6f7ad7", function(json_obj) {	
-    //$.get("res/json/posts.json", function(json_obj) {
+    //    $.get("https://jsonkeeper.com/b/M7UN", function(json_obj) {
+    /* $.get("https://api.npoint.io/763f29735f063b6f7ad7", function(json_obj) { */
+    $.get("res/json/posts.json", function(json_obj) {
+        //$.get("res/json/posts.json", function(json_obj) {
         for (obj of json_obj) {
 
             // Build html
@@ -13,8 +14,8 @@ $(function() {
             //      author
             let div = $('<div>');
             let author = $('<img src="res/images/me.png">');
-            author.prop("title",obj.authorName);
-            author.prop("alt",obj.authorName);
+            author.prop("title", obj.authorName);
+            author.prop("alt", obj.authorName);
             div.append(author);
             topbar.append(div);
             //      date
@@ -25,26 +26,31 @@ $(function() {
 
             // Image
             //  add only when image exists
-            if (obj.image){
-                let image =  $('<img>');
-                image.prop("src", "res/images/"+obj.image);
+            if (obj.image) {
+                let image = $('<img>');
+                let imgstring = obj.image;
+                // if the image is not a Base64 object embedded in JSON, but a URI to an image file
+                if (!obj.image.includes("data:image/jpeg;base64")) {
+                    imgstring = "res/images/" + imgstring;
+                }
+                image.prop("src", imgstring);
                 image.prop("alt", obj.image.split(".")[0]);
                 section.append(image);
             }
 
             // Entry-text
-            let entryTitle =  $('<div class="entry-title">');
+            let entryTitle = $('<div class="entry-title">');
             entryTitle.append($('<p>').text(obj.title));
             section.append(entryTitle);
-            let entryText =  $('<div class="entry-text">');
+            let entryText = $('<div class="entry-text">');
             let text = $('<p>').text(obj.body)
-           
+
             //  add hashtags
-            if (obj.hashTags){
+            if (obj.hashTags) {
                 let hashTags = obj.hashTags;
                 // add all hashtags
-                for (hashTag in hashTags){
-                    let hashTagElement = $('<a href="#">').text("#"+hashTags[hashTag]);
+                for (hashTag in hashTags) {
+                    let hashTagElement = $('<a href="#">').text("#" + hashTags[hashTag]);
                 }
             }
             entryText.append(text);
@@ -55,7 +61,7 @@ $(function() {
 
 
             // Entry-react
-            let entryReact =  $('<div class="entry-react">');
+            let entryReact = $('<div class="entry-react">');
             entryReact.append('<img src="res/images/like-icon-png-0.jpg" alt="I like it!"></img>');
             section.append(entryReact);
 
@@ -63,32 +69,32 @@ $(function() {
             //section.append(body);
 
 
-            
+
             $(".body-container").append(section)
         }
     })
-  
- });
 
- function convertDate(dateString){
+});
 
-    let monthNames = new Array('January','February','March','April','May','June','July','August','September','October','November','December');
+function convertDate(dateString) {
+
+    let monthNames = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
     date = new Date(dateString);
 
     var month = date.getMonth();
     var day = date.getDate();
     // add "strings" to date
-    if (day%10 == 1){
+    if (day % 10 == 1) {
         day = day + "st";
-    } else if (day%10 == 2){
+    } else if (day % 10 == 2) {
         day = day + "nd";
-    } else if (day%10 == 3){
+    } else if (day % 10 == 3) {
         day = day + "rd";
     } else {
         day = day + "th";
     }
     var year = date.getYear();
 
-    return monthNames[month] + " " + day + " " + (1900 +year);
+    return monthNames[month] + " " + day + " " + (1900 + year);
 
- }
+}
