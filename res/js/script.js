@@ -1,9 +1,8 @@
 $(function() {
 
-    //    $.get("https://jsonkeeper.com/b/M7UN", function(json_obj) {
-    /* $.get("https://api.npoint.io/763f29735f063b6f7ad7", function(json_obj) { */
-    $.get("res/json/posts.json", function(json_obj) {
-        //$.get("res/json/posts.json", function(json_obj) {
+    //$.get("https://jsonkeeper.com/b/M7UN", function(json_obj) {
+    //$.get("https://api.npoint.io/763f29735f063b6f7ad7", function(json_obj) {
+        $.get("res/json/posts.json", function(json_obj) {
         for (obj of json_obj) {
 
             // Build html
@@ -98,3 +97,21 @@ function convertDate(dateString) {
     return monthNames[month] + " " + day + " " + (1900 + year);
 
 }
+
+
+function clickFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+  
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
